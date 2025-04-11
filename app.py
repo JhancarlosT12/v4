@@ -361,7 +361,7 @@ async def get_home():
                                 <div class="card-body">
                                     <p>Copia este código y pégalo en tu sitio web para integrar el chatbot:</p>
                                     <pre id="widgetCode" class="mb-3">
-&lt;script src="http://localhost:8000/widget.js"&gt;&lt;/script&gt;
+&lt;script src="/widget.js"&gt;&lt;/script&gt;
 &lt;script&gt;
     document.addEventListener('DOMContentLoaded', function() {
         initChatbotWidget({
@@ -579,7 +579,7 @@ async def get_home():
                 const position = document.getElementById('widgetPosition').value;
                 const apiKey = document.getElementById('widgetApiKey').value || 'TU_API_KEY';
                 
-                const code = `<script src="http://localhost:8000/widget.js"><\/script>
+                const code = `<script src="/widget.js"><\/script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         initChatbotWidget({
@@ -1034,7 +1034,7 @@ async def get_widget_js():
                 const thinkingId = addBotMessage('<i class="fas fa-spinner fa-spin"></i> Procesando tu pregunta...', true);
                 
                 try {
-                    const response = await fetch('http://localhost:8000/ask-question/', {
+                    const response = await fetch('/ask-question/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
