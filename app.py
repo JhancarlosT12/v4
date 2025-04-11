@@ -1,7 +1,3 @@
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
-
 # app.py
 from fastapi import FastAPI, File, UploadFile, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -1157,6 +1153,11 @@ async def get_widget_demo():
     </html>
     """
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 # Punto de entrada para ejecutar la aplicación
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)), reload=True)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
